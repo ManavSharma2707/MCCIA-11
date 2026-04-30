@@ -1,0 +1,58 @@
+=================================================================
+SUNRISE CONSUMER GOODS — MONDAY MORNING REORDER REPORT
+Generated : 2026-04-30 10:02 (Auto-scheduled, no manual trigger required)
+For week  : 2026-05-04
+=================================================================
+
+📊 FORECAST SUMMARY (6-Week Horizon)
+   SKUs Forecasted      : 40
+   Total Forecast Units : 69,339
+   Model MAE            : 32.4 units
+   Model WMAPE          : 10.3%
+
+🚨 URGENT — STOCKOUT RISK SKUs (order TODAY):
+   SKU         SKU-034  |  Order:   3312 units  |  Cover: 0.4 wks
+   SKU         SKU-040  |  Order:   3252 units  |  Cover: 0.0 wks
+   SKU         SKU-018  |  Order:   3060 units  |  Cover: 0.2 wks
+   SKU         SKU-001  |  Order:   2934 units  |  Cover: 0.0 wks
+   SKU         SKU-005  |  Order:   2928 units  |  Cover: 0.7 wks
+   SKU         SKU-016  |  Order:   2868 units  |  Cover: 0.0 wks
+   SKU         SKU-017  |  Order:   2784 units  |  Cover: 0.4 wks
+   SKU         SKU-032  |  Order:   2772 units  |  Cover: 0.7 wks
+   SKU         SKU-038  |  Order:   2604 units  |  Cover: 0.5 wks
+   SKU         SKU-028  |  Order:   2532 units  |  Cover: 0.7 wks
+
+📦 FULL REORDER LIST (MOQ & shelf-life adjusted):
+      SKU         SKU-034  |  Order:   3312 units  |  INR ₹ 415,457
+      SKU         SKU-040  |  Order:   3252 units  |  INR ₹ 757,553
+      SKU         SKU-018  |  Order:   3060 units  |  INR ₹ 458,969
+      SKU         SKU-001  |  Order:   2934 units  |  INR ₹  92,333
+      SKU         SKU-005  |  Order:   2928 units  |  INR ₹ 186,104
+      SKU         SKU-016  |  Order:   2868 units  |  INR ₹ 261,619
+      SKU         SKU-017  |  Order:   2784 units  |  INR ₹ 433,413
+      SKU         SKU-032  |  Order:   2772 units  |  INR ₹  63,673
+      SKU         SKU-038  |  Order:   2604 units  |  INR ₹ 146,501
+      SKU         SKU-028  |  Order:   2532 units  |  INR ₹ 699,769
+      SKU         SKU-013  |  Order:   2400 units  |  INR ₹ 466,704
+      SKU         SKU-012  |  Order:   2352 units  |  INR ₹ 587,882
+      SKU         SKU-002  |  Order:   2094 units  |  INR ₹ 216,017
+      SKU         SKU-003  |  Order:   1920 units  |  INR ₹  66,816
+      SKU         SKU-004  |  Order:   1824 units  |  INR ₹ 157,375
+      SKU         SKU-008  |  Order:   1800 units  |  INR ₹ 470,538
+      SKU         SKU-022  |  Order:   1728 units  |  INR ₹ 262,068
+      SKU         SKU-037  |  Order:   1584 units  |  INR ₹ 163,184
+      SKU         SKU-027  |  Order:   1536 units  |  INR ₹ 276,879
+      SKU         SKU-019  |  Order:   1470 units  |  INR ₹ 174,842
+
+   Total Order Value : ₹7,841,743
+
+📉 OVERSTOCK ALERT (no reorder needed):
+   ✅ No overstock alerts.
+
+🎯 DIWALI 2023 RETROSPECTIVE VALIDATION:
+   Identified stockout SKUs : 0
+   SKU IDs: []
+
+=================================================================
+END OF REPORT — Next auto-run: next Monday 07:00 AM
+=================================================================
