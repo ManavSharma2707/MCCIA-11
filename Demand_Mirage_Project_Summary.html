@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Demand Mirage - Inventory Intelligence</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #00cec9;
+            --dark: #2d3436;
+            --light: #f9f9ff;
+            --success: #00b894;
+            --danger: #d63031;
+            --gray: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Problem Grid */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-large {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .crisis-summary {
+            background: #ffeaa7;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 5px solid #fdcb6e;
+            font-weight: 600;
+        }
+
+        /* Methodology Section */
+        .tech-box {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .method-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .step {
+            padding-left: 20px;
+            border-left: 2px solid var(--secondary);
+        }
+
+        /* Metrics */
+        .metrics-bar {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .metric-item span {
+            display: block;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .metric-label {
+            color: var(--gray);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Reorder Engine */
+        .engine-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .engine-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--accent);
+        }
+
+        /* Citation Style */
+        .cite {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-style: italic;
+            vertical-align: super;
+            margin-left: 2px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .takeaway {
+            text-align: left;
+        }
+
+        .takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .method-steps { grid-template-columns: 1fr; }
+            .engine-grid { grid-template-columns: 1fr; }
+            .metrics-bar { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>The Demand Mirage</h1>
+            <p class="tagline">Intelligent Demand Forecasting & Inventory Optimization for Sunrise Consumer Goods Distributors <span class="cite">[cite: 250, 251]</span></p>
+            <div class="summary-box">
+                An end-to-end XGBoost forecasting pipeline that generated highly accurate 6-week SKU-level forecasts (10.3% WMAPE) and an automated, constraint-aware reorder engine for 140 SKUs distributed across 320 outlets in Pune and Nashik. <span class="cite">[cite: 252]</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="problem">
+        <div class="container">
+            <h2>The Inventory Paradox</h2>
+            <p style="margin-bottom: 30px;">The warehouse simultaneously suffers from under-ordering and over-ordering, creating conflicting financial pressures <span class="cite">[cite: 253, 254, 255]</span>.</p>
+            
+            <div class="problem-grid">
+                <div class="card">
+                    <span class="stat-large">₹18L</span>
+                    <h3>Lost Sales <span class="cite">[cite: 256, 261]</span></h3>
+                    <p>Revenue lost during Diwali 2023 from 14 fast-moving SKUs stocking out for 8-12 days during peak demand <span class="cite">[cite: 257, 262, 263]</span>.</p>
+                </div>
+                <div class="card">
+                    <span class="stat-large">₹22L</span>
+                    <h3>Tied Overstock <span class="cite">[cite: 256, 264]</span></h3>
+                    <p>Capital immobilized in slow-moving inventory sitting for over 4 months without turnover <span class="cite">[cite: 257, 265, 266]</span>.</p>
+                </div>
+                <div class="card">
+                    <span class="stat-large">140</span>
+                    <h3>SKU Portfolio <span class="cite">[cite: 267]</span></h3>
+                    <p>Individual stock-keeping units distributed across 320 retail outlets in Pune and Nashik <span class="cite">[cite: 268, 269]</span>.</p>
+                </div>
+            </div>
+
+            <div class="crisis-summary">
+                This dual crisis represents a ₹40L opportunity cost for Sunrise Distributors. <span class="cite">[cite: 260, 270]</span> Manual decisions made every Monday morning based on gut feeling and Telegram messages are no longer sufficient. <span class="cite">[cite: 258, 259]</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology" style="background: #f0f0ff;">
+        <div class="container">
+            <h2>The Technical Breakthrough</h2>
+            <div class="method-steps">
+                <div class="step">
+                    <h3>The "Missing Data" Challenge</h3>
+                    <p>If a store doesn't report sales, is it because nobody bought the product (True Zero) or because the store simply didn't upload data (Missing Data)? <span class="cite">[cite: 272, 274]</span> Treating missing data as zero artificially deflates demand and triggers dangerous over-ordering <span class="cite">[cite: 275]</span>.</p>
+                </div>
+                <div class="step">
+                    <h3>The Solution</h3>
+                    <p>We built a store-level reporting rate threshold to classify missing data points. <span class="cite">[cite: 277, 278]</span> Our algorithm identified that while 52.7% were "True Zeros," 42.6% were actually "Missing Data." <span class="cite">[cite: 279]</span> Excluding this missing data from training protected the model from systematic underestimation <span class="cite">[cite: 280]</span>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="engine">
+        <div class="container">
+            <h2>The Forecasting Engine</h2>
+            <div class="tech-box">
+                <div class="method-steps">
+                    <div>
+                        <h3>XGBoost Regressor <span class="cite">[cite: 281, 282]</span></h3>
+                        <p>Gradient-boosted decision trees trained using walk-forward validation to strictly mimic real-world deployment conditions <span class="cite">[cite: 283]</span>.</p>
+                    </div>
+                    <div>
+                        <h3>SKU-Level Precision <span class="cite">[cite: 284]</span></h3>
+                        <p>Forecasts demand 6 weeks ahead at the individual SKU level, avoiding the penalty of aggregating at brand or category level <span class="cite">[cite: 285]</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-bar">
+                <div class="metric-item">
+                    <span class="metric-value">10.3%</span>
+                    <span class="metric-label">Overall WMAPE <span class="cite">[cite: 287, 289]</span></span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">32.4</span>
+                    <span class="metric-label">Units MAE <span class="cite">[cite: 287, 290]</span></span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-value">7%</span>
+                    <span class="metric-label">Lowest Weekly Error <span class="cite">[cite: 291]</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reorder" style="background: #fafaff;">
+        <div class="container">
+            <h2>Constraint-Aware Reordering</h2>
+            <p style="margin-bottom: 30px;">Translating forecasts into actionable purchase orders while respecting business realities <span class="cite">[cite: 293, 294]</span>.</p>
+            <div class="engine-grid">
+                <div class="engine-card">
+                    <h4>Supplier MOQs</h4>
+                    <p>All orders are mathematically rounded up to meet the supplier's Minimum Order Quantity requirements <span class="cite">[cite: 295, 296, 297]</span>.</p>
+                </div>
+                <div class="engine-card">
+                    <h4>Shelf-Life Cap</h4>
+                    <p>System is hard-coded to never recommend an order quantity that exceeds demand within the product's remaining shelf life <span class="cite">[cite: 298, 299, 300]</span>.</p>
+                </div>
+                <div class="engine-card">
+                    <h4>Stockout Prevention</h4>
+                    <p>Identifies SKUs at immediate risk based on forecast demand versus current and in-transit inventory <span class="cite">[cite: 301, 302, 303]</span>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diwali">
+        <div class="container">
+            <h2>Diwali 2023 Retrospective</h2>
+            <p style="margin-bottom: 30px;">A system that cannot predict past stockouts cannot be trusted for future ones <span class="cite">[cite: 304, 306]</span>.</p>
+            <div class="tech-box" style="background: var(--light); color: var(--dark); border: 2px solid var(--secondary);">
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><strong>01. Baseline Calculation:</strong> Dynamically calculated non-festive demand baseline for each SKU <span class="cite">[cite: 308, 309, 310]</span>.</li>
+                    <li style="margin-bottom: 15px;"><strong>02. Uplift Application:</strong> Applied observed uplift ratios from Diwali 2022 to establish expected festive demand <span class="cite">[cite: 311, 312, 313]</span>.</li>
+                    <li style="margin-bottom: 15px;"><strong>03. Stockout Detection:</strong> Flagged SKUs where actual sales fell short of expected spike by >30% <span class="cite">[cite: 314, 315, 316]</span>.</li>
+                </ul>
+                <div style="margin-top: 20px; color: var(--success); font-weight: 700;">
+                    ✓ Result: Successfully identified all 14 lost SKUs from Diwali 2023 <span class="cite">[cite: 317]</span>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact" style="background: #f8f9fa;">
+        <div class="container">
+            <h2>Business Impact & ROI</h2>
+            <div class="problem-grid">
+                <div class="card" style="border-left: 5px solid var(--success);">
+                    <h3>₹18L Saved</h3>
+                    <p>Prevented revenue loss by ensuring adequate inventory for fast-moving SKUs <span class="cite">[cite: 328, 329]</span>.</p>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--primary);">
+                    <h3>₹22L Released</h3>
+                    <p>Capital freed from slow-moving overstock to redeploy in profitable inventory <span class="cite">[cite: 326, 327]</span>.</p>
+                </div>
+                <div class="card" style="border-left: 5px solid var(--accent);">
+                    <h3>100% Automated</h3>
+                    <p>Text-based report ready before 8 AM every Monday, eliminating manual error and analysis time <span class="cite">[cite: 318, 319, 320, 330, 331]</span>.</p>
+                </div>
+            </div>
+            <div class="crisis-summary" style="background: #d1f2eb; border-color: #1abc9c;">
+                Operational Deliverable: ₹7.84M optimized purchase order generated for 6-week horizon, delivering ₹40L total opportunity capture <span class="cite">[cite: 332, 333, 334]</span>.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>Key Takeaways <span class="cite">[cite: 335]</span></h2>
+            <div class="takeaway-grid">
+                <div class="takeaway">
+                    <h4>XGBoost Pipeline</h4>
+                    <p>10.3% WMAPE achieved through SKU-level predictions <span class="cite">[cite: 336, 337]</span>.</p>
+                </div>
+                <div class="takeaway">
+                    <h4>Data Quality</h4>
+                    <p>Classification of True Zeros vs. Missing Data protected accuracy <span class="cite">[cite: 338, 339]</span>.</p>
+                </div>
+                <div class="takeaway">
+                    <h4>Constraint-Aware</h4>
+                    <p>MOQs and shelf-life caps applied automatically with zero violations <span class="cite">[cite: 340, 341]</span>.</p>
+                </div>
+                <div class="takeaway">
+                    <h4>Production Ready</h4>
+                    <p>Full automation eliminating Monday morning guesswork <span class="cite">[cite: 342, 343]</span>.</p>
+                </div>
+            </div>
+            <p>&copy; 2023 Sunrise Consumer Goods Distributors x The Demand Mirage</p>
+        </div>
+    </footer>
+
+</body>
+</html>
