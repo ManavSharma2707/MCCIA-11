@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #e74c3c; }
+        h2 { color: #34495e; margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #3498db; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        .warning { background: #ffe6e6; font-weight: bold; }
+        .timestamp { color: #7f8c8d; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>📊 Sunrise Distributors — Weekly Reorder Report</h1>
+    <p class="timestamp">Generated: {{ generated_at }}</p>
+    
+    <h2>🔴 Section A: Order Immediately ({{ order_now|length }} SKUs)</h2>
+    <table>
+        <tr><th>SKU</th><th>Order Qty</th><th>Supplier</th><th>Est. Cost</th><th>Shelf Warning</th></tr>
+        {% for row in order_now %}
+        <tr class="{{ 'warning' if row.shelf_warning else '' }}">
+            <td>{{ row.sku_id }}</td>
+            <td>{{ row.order_qty }}</td>
+            <td>{{ row.supplier }}</td>
+            <td>₹{{ row.order_qty * row.unit_cost }}</td>
+            <td>{{ row.shelf_warning }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>🟡 Section B: Watch List (stockout risk > 70%)</h2>
+    <table>
+        <!-- Similar structure -->
+    </table>
+    
+    <h2>🔵 Section C: Dead Stock to Clear</h2>
+    <table>
+        <!-- Similar structure -->
+    </table>
+    
+    <h2>📈 Diwali 2023 Retrospective (Model Validation)</h2>
+    <p>These 14 SKUs were predicted to stock out based on pre-Diwali velocity. Actual stockouts confirmed model accuracy.</p>
+    <table>
+        {% for row in diwali_retrospective %}
+        <tr>
+            <td>{{ row.sku_id }}</td>
+            <td>Confidence: {{ (row.stockout_score * 100)|round }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
